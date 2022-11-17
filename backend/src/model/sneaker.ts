@@ -8,7 +8,6 @@ import {Schema, model} from 'mongoose'
     quantity?: number;
     sale?: boolean;
     sold_out?: boolean;
-    sold_quantity: number; // mặc định = 0
 }
 
 let SneakerSchema = new Schema<ISneaker>({
@@ -19,7 +18,6 @@ let SneakerSchema = new Schema<ISneaker>({
     quantity: Number,
     sale: Boolean,
     sold_out: Boolean,
-    sold_quantity: Number,
 })
 
 const Sneaker = model<ISneaker>('Sneaker', SneakerSchema)

@@ -5,14 +5,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const express_fileupload_1 = __importDefault(require("express-fileupload"));
+const mongoose_1 = __importDefault(require("mongoose"));
 const app = (0, express_1.default)();
-app.set("view engine", "ejs");
-app.set("views", "./src/views");
 app.use((0, express_fileupload_1.default)({
     createParentPath: true
 }));
 app.use(express_1.default.static('public'));
 app.use(express_1.default.json());
+mongoose_1.default.connect('mongodb://127.0.0.1:27017/meomeo_sneaker').then(() => {
+    console.log('connected');
+}).catch((err) => {
+    console.log(err);
+});
+app.set("view engine", "ejs");
+app.set("views", "./src/views");
 app.listen(3000, () => {
     console.log('server running localhost 3000');
 });
