@@ -8,7 +8,7 @@ app.use(fileUpload({
 }))
 app.use(express.static('public'));
 app.use(express.json())
-mongoose.connect('mongodb://127.0.0.1:27017/meomeo_sneaker').then(() => {
+mongoose.connect('mongodb://127.0.0.1:27017/...').then(() => {
     console.log('connected')
 }).catch((err) => {
     console.log(err)
