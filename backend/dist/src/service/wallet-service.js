@@ -39,6 +39,11 @@ class WalletService {
                 message: "Edit Success"
             });
         };
+        this.findWalletByName = async (req, res) => {
+            let walletName = req.body.name;
+            let arrWallet = await wallet_1.Wallet.find({ 'name': { '$regex': walletName } });
+            return res.status(201).json(arrWallet);
+        };
         this.checkNameWallet = async (idUser) => {
             let wallet = await wallet_1.Wallet.find({ idUser: idUser });
             if (wallet.length === 0) {

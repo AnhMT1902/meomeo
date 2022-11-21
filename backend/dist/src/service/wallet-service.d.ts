@@ -4,6 +4,7 @@ declare class WalletService {
     addWallet: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;
     deleteWallet: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;
     editWallet: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;
+    findWalletByName: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;
     checkNameWallet: (idUser: any) => Promise<boolean>;
 }
 declare const _default: WalletService;

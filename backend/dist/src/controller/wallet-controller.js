@@ -18,6 +18,9 @@ class WalletController {
         this.uploadWallet = async (req, res) => {
             return await wallet_service_1.default.editWallet(req, res);
         };
+        this.findWalletByName = async (req, res) => {
+            return await wallet_service_1.default.findWalletByName(req, res);
+        };
     }
 }
 exports.default = new WalletController();

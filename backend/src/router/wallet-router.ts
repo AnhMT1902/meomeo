@@ -7,3 +7,4 @@ walletRouter.get('/show', WalletController.showWallet);
 walletRouter.post('/create/:id', WalletController.createWallet);
 walletRouter.delete('/delete/:id', WalletController.deleteWallet);
 walletRouter.put('/edit/:id', WalletController.uploadWallet);
+walletRouter.get('/find', WalletController.findWalletByName);

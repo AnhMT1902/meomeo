@@ -32,11 +32,19 @@ class WalletService {
     editWallet = async (req: Request, res: Response) => {
         let id = req.params.id
         let newWallet = req.body
-        await Wallet.updateMany({_id:id},{$set:newWallet})
+        await Wallet.updateMany({_id: id}, {$set: newWallet})
         return res.status(201).json({
             message: "Edit Success"
         })
     }
+
+    findWalletByName = async (req: Request, res: Response) => {
+        let walletName = req.body.name
+        let arrWallet = await Wallet.find({'name': {'$regex': walletName}})
+        return res.status(201).json(arrWallet)
+    }
+
+
     checkNameWallet = async (idUser) => {
         let wallet = await Wallet.find({idUser: idUser})
         if (wallet.length === 0) {
