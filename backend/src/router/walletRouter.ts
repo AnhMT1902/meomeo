@@ -1,7 +1,9 @@
 import {Router} from "express";
-import UserController from "../controller/user-controller";
-import WalletService from "../service/wallet-service";
 import WalletController from "../controller/wallet-controller";
+import {auth} from "../middleware/auth";
 export const walletRouter = Router();
-walletRouter.post('/creat', WalletController.creatWallet);
-walletRouter.post('/delete', WalletController.deleteWallet);
+walletRouter.use(auth)
+walletRouter.get('/show', WalletController.showWallet);
+walletRouter.post('/create/:id', WalletController.createWallet);
+walletRouter.delete('/delete/:id', WalletController.deleteWallet);
+walletRouter.put('/edit/:id', WalletController.uploadWallet);

@@ -75,11 +75,11 @@ class AccountService {
                 message: "Upload Password Success!!!"
             });
         };
-        this.logoutUser = async (req, res) => {
-            localStorage.clear();
-            return res.status(201).json({
-                message: "LogOut Success!!!"
-            });
+        this.getInfoUser = async (req, res) => {
+            let id = req.params.id;
+            let infoUser = await user_1.User.findById({ _id: id });
+            console.log(infoUser._id, typeof (infoUser));
+            return res.status(200).json(infoUser);
         };
     }
 }

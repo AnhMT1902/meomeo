@@ -8,6 +8,8 @@ userRouter.post('/register',UserController.register);
 userRouter.use(auth);
 userRouter.put('/editUser/:id',UserController.uploadAccount);
 userRouter.put('/editPassword/:id',UserController.uploadPassword);
+userRouter.get('/infoUser/:id',UserController.getInfo);
+
 
 
 

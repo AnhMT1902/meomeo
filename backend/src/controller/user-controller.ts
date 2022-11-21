@@ -14,6 +14,9 @@ class UserController {
     uploadPassword = async (req: Request, res: Response) => {
         return await AccountService.editPassword(req, res)
     }
+    getInfo = async (req: Request, res: Response) => {
+        return await AccountService.getInfoUser(req, res)
+    }
 }
 
 export default new UserController();

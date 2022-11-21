@@ -70,6 +70,12 @@ class AccountService {
             message:"Upload Password Success!!!"
         })
     }
+    getInfoUser =async (req: Request, res: Response) =>{
+        let id = req.params.id
+        let infoUser = await User.findById({_id:id});
+        console.log(infoUser._id,typeof(infoUser))
+        return res.status(200).json(infoUser);
+    }
 }
 
 export default new AccountService();
