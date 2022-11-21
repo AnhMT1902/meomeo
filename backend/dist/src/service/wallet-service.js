@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+
 const wallet_1 = require("../model/wallet");
 class WalletService {
     constructor() {
@@ -51,6 +52,7 @@ class WalletService {
             }
             else
                 return false;
+
         };
     }
 }
