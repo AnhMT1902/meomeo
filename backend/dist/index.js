@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const express_fileupload_1 = __importDefault(require("express-fileupload"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const router_1 = require("./src/router/router");
+const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
 app.use((0, express_fileupload_1.default)({
     createParentPath: true
@@ -18,6 +19,7 @@ mongoose_1.default.connect('mongodb://127.0.0.1:27017/finance').then(() => {
 }).catch((err) => {
     console.log(err);
 });
+app.use((0, cors_1.default)());
 app.use('', router_1.router);
 app.set("view engine", "ejs");
 app.set("views", "./src/views");
