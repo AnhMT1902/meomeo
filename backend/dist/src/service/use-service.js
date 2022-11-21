@@ -75,12 +75,6 @@ class AccountService {
                 message: "Upload Password Success!!!"
             });
         };
-        this.logoutUser = async (req, res) => {
-            localStorage.clear();
-            return res.status(201).json({
-                message: "LogOut Success!!!"
-            });
-        };
     }
 }
 exports.default = new AccountService();
