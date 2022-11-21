@@ -5,6 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const user_1 = require("../model/user");
 const bcrypt_1 = __importDefault(require("bcrypt"));
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const auth_1 = require("../middleware/auth");
 class AccountService {
     constructor() {
         this.addAccount = async (req, res) => {
@@ -24,6 +26,60 @@ class AccountService {
                     message: "Success"
                 });
             }
+        };
+        this.loginAccount = async (req, res) => {
+            let user = req.body;
+            let userFind = await user_1.User.findOne({
+                username: user.username
+            });
+            if (!userFind) {
+                return res.status(201).json({
+                    message: "Error User or Password!!!"
+                });
+            }
+            else {
+                let comparePassword = await bcrypt_1.default.compare(user.password, userFind.password);
+                if (!comparePassword) {
+                    return res.status(201).json({
+                        message: "Error User or Password!!!"
+                    });
+                }
+                else {
+                    let payload = {
+                        idUser: userFind._id,
+                        username: userFind.username
+                    };
+                    let token = await jsonwebtoken_1.default.sign(payload, auth_1.SECRET, {
+                        expiresIn: 36000
+                    });
+                    return res.status(200).json({
+                        token: token,
+                        message: "Success!!!"
+                    });
+                }
+            }
+        };
+        this.editAccount = async (req, res) => {
+            let info = req.body;
+            let id = req.params.id;
+            await user_1.User.updateMany({ _id: id }, { $set: info });
+            return res.status(201).json({
+                message: "Edit Success!!!"
+            });
+        };
+        this.editPassword = async (req, res) => {
+            let password = req.body;
+            let id = req.params.id;
+            await user_1.User.updateOne({ _id: id }, { $set: { password: password } });
+            return res.status(201).json({
+                message: "Upload Password Success!!!"
+            });
+        };
+        this.logoutUser = async (req, res) => {
+            localStorage.clear();
+            return res.status(201).json({
+                message: "LogOut Success!!!"
+            });
         };
     }
 }
