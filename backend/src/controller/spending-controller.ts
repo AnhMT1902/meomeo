@@ -1,11 +1,19 @@
 import {Request, Response} from "express";
-import {Spending} from "../model/spending";
+import SpendingService from "../service/spending-service";
+import spendingService from "../service/spending-service";
 
-class SpendingController{
-    getAll = async (req:Request,res:Response)=>{
-        let spending = await Spending.find();
-        return res.status(200).json(spending)
+export class SpendingController {
+    getAll = async (req: Request, res: Response) => {
+        await SpendingService.findAll(req, res)
+    }
+
+    addSpending = async (req: Request, res: Response) => {
+        await spendingService.addSpending(req,res)
+    }
+
+    delete = async (req:Request,res:Response)=>{
+        await spendingService.deleteSpending(req,res)
     }
 }
 
-export default new  SpendingController()
+export default new SpendingController()

@@ -1,6 +1,8 @@
 import {Router} from "express";
 import spendingController from "../controller/spending-controller";
 
-const router = Router();
+export const spendingRouter = Router();
 
-router.get('/spending',spendingController.getAll);
+spendingRouter.get('',spendingController.getAll);
+spendingRouter.post('/create',spendingController.addSpending);
+spendingRouter.delete('/delete/:id',spendingController.delete)
