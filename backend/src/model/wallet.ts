@@ -13,6 +13,7 @@ const WalletSchema = new Schema<IWallet>({
         type:Schema.Types.ObjectId,
         ref:'User'
     }
+
 });
 const Wallet=model<IWallet>('Wallet',WalletSchema);
 export {Wallet};

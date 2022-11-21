@@ -1,9 +1,8 @@
 import {Router} from "express";
 import {userRouter} from "./user-router";
-import {spendingRouter} from "./spending-router"
 
-import {walletRouter} from "./walletRouter";
+import {walletRouter} from "./wallet-router";
 export const router = Router();
-router.use('/auth',userRouter);
-router.use('/spending',spendingRouter);
-router.use('/wallet', walletRouter)
+router.use('',userRouter);
+router.use('',walletRouter);
+

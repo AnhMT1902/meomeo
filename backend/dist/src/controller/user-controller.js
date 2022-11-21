@@ -18,6 +18,9 @@ class UserController {
         this.uploadPassword = async (req, res) => {
             return await use_service_1.default.editPassword(req, res);
         };
+        this.getInfo = async (req, res) => {
+            return await use_service_1.default.getInfoUser(req, res);
+        };
     }
 }
 exports.default = new UserController();

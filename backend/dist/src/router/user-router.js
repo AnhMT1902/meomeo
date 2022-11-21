@@ -13,4 +13,5 @@ exports.userRouter.post('/register', user_controller_1.default.register);
 exports.userRouter.use(auth_1.auth);
 exports.userRouter.put('/editUser/:id', user_controller_1.default.uploadAccount);
 exports.userRouter.put('/editPassword/:id', user_controller_1.default.uploadPassword);
+exports.userRouter.get('/infoUser/:id', user_controller_1.default.getInfo);
 //# sourceMappingURL=user-router.js.map
